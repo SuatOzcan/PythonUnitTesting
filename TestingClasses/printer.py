@@ -8,9 +8,8 @@ class Printer:
     
     def print(self, pages):
         if(pages > self._capacity):
-            raise PrinterError("The printer does not have enpugh capacity for all of these pages.")
+            raise PrinterError("The printer does not have enough capacity for all of these pages.")
         
         self._capacity -= pages
     
         return f"The printer printed {pages} pages in {pages / self.pages_per_s:.2f} seconds."
-    

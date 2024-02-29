@@ -20,6 +20,18 @@ class TestFunctions(TestCase):
         divisor = -3
         expected_result = -5
         self.assertAlmostEqual(divide(dividend,divisor),expected_result,delta=0.0001)
+    
+    def test_divide_dividend_zero(self):
+        dividend =0
+        divisor =3
+        expected_result = 0
+        self.assertEqual(divide(dividend,divisor),expected_result)
+    
+    def test_divide_error_on_divisor_zero(self):
+        self.assertRaises(ValueError,lambda:divide(15,0))
+        # Or
+        with self.assertRaises(ValueError):
+            divide(15,0)
 # Now type in the console python -m unittest test_functions.py
 
 # If we run the code below, it will raise an exception

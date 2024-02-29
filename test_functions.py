@@ -1,5 +1,5 @@
 from unittest import TestCase
-from functions import divide
+from functions import *
 
 class TestFunctions(TestCase):
     # Functions should also start with "test_".
@@ -32,6 +32,42 @@ class TestFunctions(TestCase):
         # Or
         with self.assertRaises(ValueError):
             divide(15,0)
+    
+    def test_multiply_empty(self):
+        with self.assertRaises(ValueError):
+            multiply()
+    
+    def test_multiply_single_value(self):
+        expected_result = 15
+        self.assertAlmostEqual(multiply(15),expected_result,delta=0.0001)
+
+
+    def test_multiply_with_zero(self):
+        expected_result = 0
+        self.assertEqual(multiply(0),expected_result)
+
+    def test_multiply_result(self):
+        inputs = (1,2,15)
+        expected_result = 30
+        self.assertAlmostEqual(multiply(*inputs),expected_result,delta=0.0001)
+    
+    def test_multiply_result_with_zero(self):
+        inputs =(1,2,3,4,5,0)
+        expected_result = 0
+        self.assertAlmostEqual(multiply(*inputs),expected_result,delta=0.0001)    
+    
+    def test_multiply_negative_values(self):
+        inputs=(1,2,3,4,5,-5)
+        expected_result =-600
+        self.assertAlmostEqual(multiply(*inputs),expected_result,delta=0.0001)
+    
+    def test_multiply_negative_values_zero(self):
+        inputs = (1,2,3,4,0)
+        expected_result = 0
+        self.assertAlmostEqual(multiply(*inputs),expected_result,delta=0.0001)
+
+
+
 # Now type in the console python -m unittest test_functions.py
 
 # If we run the code below, it will raise an exception

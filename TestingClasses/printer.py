@@ -2,7 +2,7 @@ class PrinterError(RuntimeError):
     pass
 
 class Printer:
-    def __init__(self, pages_per_s: int, capacity: int):
+    def __init__(self, pages_per_s: float, capacity: int):
         self.pages_per_s = pages_per_s
         self._capacity = capacity
     
@@ -12,7 +12,5 @@ class Printer:
         
         self._capacity -= pages
     
-        return f"The printer {pages} pages in {pages / pages_per_s:.2f}."
+        return f"The printer printed {pages} pages in {pages / self.pages_per_s:.2f} seconds."
     
-printer = Printer(3,10)
-printer.print(11)

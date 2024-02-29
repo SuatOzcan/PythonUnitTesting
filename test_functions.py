@@ -15,10 +15,15 @@ class TestFunctions(TestCase):
                          msg="The expected result and the return of the function are not equal.",
                         delta = 0.0001)
 
+    def test_divide_negative_result(self):
+        dividend = 15
+        divisor = -3
+        expected_result = -5
+        self.assertAlmostEqual(divide(dividend,divisor),expected_result,delta=0.0001)
 # Now type in the console python -m unittest test_functions.py
 
 # If we run the code below, it will raise an exception
-# if the expected value and the retun of the function are not equal.
+# if the expected value and the return of the function are not equal.
 test_function = TestFunctions()
 print(test_function.test_divide_result())
 
